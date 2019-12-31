@@ -8,9 +8,13 @@ namespace EventSource4Net
 {
     class WebRequesterFactory : IWebRequesterFactory
     {
+        public int Timeout { get; set; }
         public IWebRequester Create()
         {
-            return new WebRequester();
+            return new WebRequester()
+            {
+                Timeout = Timeout
+            };
         }
     }
 }

@@ -9,12 +9,13 @@ namespace EventSource4Net
 {
     class WebRequester : IWebRequester
     {
+        public int Timeout { get; set; }
         public Task<IServerResponse> Get(Uri url)
         {
             var wreq = (HttpWebRequest)WebRequest.Create(url);
             wreq.Method = "GET";
             wreq.Proxy = null;
-
+            wreq.Timeout = Timeout;
             var taskResp = Task.Factory.FromAsync<WebResponse>(wreq.BeginGetResponse,
                                                             wreq.EndGetResponse,
                                                             null).ContinueWith<IServerResponse>(t => new ServerResponse(t.Result));

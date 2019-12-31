@@ -7,6 +7,7 @@ namespace EventSource4Net
 {
     public interface IWebRequesterFactory
     {
+        int Timeout { get; set; }
         IWebRequester Create();
     }
 }

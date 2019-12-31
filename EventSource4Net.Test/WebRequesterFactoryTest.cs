@@ -16,6 +16,8 @@ namespace EventSource4Net.Test
             get;
             private set;
         }
+        public int Timeout { get; set; }
+
         public WebRequesterFactoryMock(ServiceResponseMock response)
         {
              this.WebRequesterMock = new WebRequesterMock(response);
@@ -28,8 +30,10 @@ namespace EventSource4Net.Test
 
     class WebRequesterMock : IWebRequester
     {
+
         public ManualResetEvent GetCalled = new ManualResetEvent(false);
         public ServiceResponseMock Response { get; private set; }
+        public int Timeout { get; set; }
 
         public WebRequesterMock(ServiceResponseMock response)
         {

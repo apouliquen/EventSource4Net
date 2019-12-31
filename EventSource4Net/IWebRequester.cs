@@ -9,6 +9,7 @@ namespace EventSource4Net
 {
     public interface IWebRequester
     {
+        int Timeout { get; set; }
         Task<IServerResponse> Get(Uri url);
 
     }

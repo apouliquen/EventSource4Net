@@ -61,7 +61,8 @@ namespace EventSource4Net
         {
             _timeout = timeout;
             Url = url;
-            CurrentState = new DisconnectedState(Url,_webRequesterFactory);
+            _webRequesterFactory.Timeout = _timeout;
+            CurrentState = new DisconnectedState(Url, _webRequesterFactory);
             _logger.Info("EventSource created for " + url.ToString());
         }
 
